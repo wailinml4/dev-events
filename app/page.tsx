@@ -8,6 +8,9 @@ const Page = async () => {
   const { events } = await response.json()
 
 
+  
+
+
   return (
     <section>
       <h1 className="text-center">DevEvents</h1>

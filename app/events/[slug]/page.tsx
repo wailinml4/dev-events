@@ -50,7 +50,7 @@ const toStringArray = (value: unknown): string[] =>
 const EventDetailsPage = async ({ params }: { params: Promise<{slug: string}> }) => {
   const { slug } = await params; 
   const request = await fetch(`${BASE_URL}/api/events/${slug}`) 
-  const { event: { description, image, overview, date, time, location, mode, agenda, audience, organizer, tags} } = await request.json() 
+  const { event: { _id, description, image, overview, date, time, location, mode, agenda, audience, organizer, tags} } = await request.json() 
 
   if(!description) return notFound()
 
@@ -99,7 +99,7 @@ const EventDetailsPage = async ({ params }: { params: Promise<{slug: string}> })
           <div className="signup-card">
             <h2>Book Your Spot</h2>
             {bookings > 0 ? <p>Join {bookings} people who have already booked their spot!</p>: <p>Be the first to book your spot!</p>}
-            <BookEvent />
+            <BookEvent eventId={_id} />
 
           </div>
         </aside>

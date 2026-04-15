@@ -12,7 +12,10 @@ export interface IBooking extends Document {
 }
 
 /**
- * Validate email format using regex.
+ * Checks whether a string is a valid email address format.
+ *
+ * @param email - The email address to validate
+ * @returns `true` if the string matches a basic email pattern, `false` otherwise
  */
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

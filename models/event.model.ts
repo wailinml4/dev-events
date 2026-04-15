@@ -23,8 +23,10 @@ export interface IEvent extends Document {
 }
 
 /**
- * Generate URL-friendly slug from title.
- * Replaces spaces with hyphens and converts to lowercase.
+ * Create a URL-friendly slug from a title.
+ *
+ * @param title - The input text to convert into a slug
+ * @returns The normalized slug: lowercase, trimmed, with special characters removed, spaces replaced by hyphens, and consecutive hyphens collapsed into a single hyphen
  */
 function generateSlug(title: string): string {
   return title
@@ -36,7 +38,11 @@ function generateSlug(title: string): string {
 }
 
 /**
- * Validate and normalize date to ISO format (YYYY-MM-DD).
+ * Convert a date string to the ISO date portion formatted as YYYY-MM-DD.
+ *
+ * @param dateString - A date in ISO 8601 or any format parsable by JavaScript's `Date` constructor.
+ * @returns The date portion formatted as `YYYY-MM-DD`.
+ * @throws Error if `dateString` cannot be parsed as a valid date.
  */
 function normalizeDateToISO(dateString: string): string {
   const parsed = new Date(dateString);
@@ -49,7 +55,11 @@ function normalizeDateToISO(dateString: string): string {
 }
 
 /**
- * Validate and normalize time to 24-hour format (HH:MM).
+ * Validate a time string and ensure it conforms to 24-hour `HH:MM` format.
+ *
+ * @param timeString - The time string to validate, expected as `HH:MM` (24-hour clock)
+ * @returns The original `timeString` when it matches `HH:MM` 24-hour format
+ * @throws Error - If `timeString` does not match the `HH:MM` 24-hour format
  */
 function normalizeTime(timeString: string): string {
   const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;

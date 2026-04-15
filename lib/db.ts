@@ -23,14 +23,13 @@ if (!global.mongooseConnection) {
 }
 
 /**
- * Connect to MongoDB and cache the connection.
+ * Establishes a MongoDB connection and caches it for reuse across imports and serverless invocations.
  *
- * This function implements connection caching to prevent multiple connections
- * during serverless deployments. If a connection already exists, it reuses it.
- * If a connection promise is pending, it waits for it to complete.
+ * Reuses an existing cached connection when available, or awaits a pending connection attempt; if neither
+ * exists, creates a new connection and caches its promise and resulting `Connection`.
  *
- * @returns {Promise<Connection>} The cached or newly established MongoDB connection
- * @throws {Error} If MONGODB_URI environment variable is not set or connection fails
+ * @returns The established `Connection` to MongoDB
+ * @throws Error if `MONGODB_URI` is not set or if the connection attempt fails
  */
 async function connectDB(): Promise<Connection> {
   // Validate that the MongoDB URI is provided

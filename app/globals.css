@@ -128,7 +128,7 @@
   }
 
   ul {
-    @apply list-disc list-inside;
+    @apply list-none;
   }
 }
 
@@ -236,6 +236,16 @@
 
     p {
       @apply text-light-100 text-lg max-sm:text-sm;
+    }
+
+    #event-card {
+      p {
+        @apply text-light-200 text-sm font-light;
+      }
+
+      .datetime {
+        @apply text-light-200;
+      }
     }
 
     .flex-col-gap-2 {
